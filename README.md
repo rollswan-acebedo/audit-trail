@@ -33,7 +33,11 @@ php artisan migrate
 4. Publish config file by running:
 
 ```bash
-php artisan vendor:publish --tag=AuditTrail
+php artisan vendor:publish --provider="Rollswan\AuditTrail\Providers\AuditTrailServiceProvider"
+```
+
+```bash
+php artisan vendor:publish --tag="audit-trail"
 ```
 
 ### How to use?
