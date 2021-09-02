@@ -2,7 +2,6 @@
 
 namespace Rollswan\AuditTrail\Providers;
 
-use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
 use Rollswan\AuditTrail\Middleware\AuditTrailMiddleware;
@@ -26,17 +25,16 @@ class AuditTrailServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        $source = realpath($raw = __DIR__ . '/../config/audit-trail.php') ?: $raw;
-
         $router->middlewareGroup('audit-trail', [AuditTrailMiddleware::class]);
 
-        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
-            // Make the configuration files publishable
-            $this->publishes([$source => config_path('audit-trail.php')], 'AuditTrail');
-        }
-
-        $this->mergeConfigFrom($source, 'AuditTrail');
-
+        // Make the configuration files publishable
+        $this->publishes(
+            [
+                __DIR__ . '/../config/audit-trail.php' => config_path('audit-trail.php')
+            ],
+            'config'
+        );
+      
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
 }
