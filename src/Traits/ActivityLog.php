@@ -38,7 +38,7 @@ trait ActivityLog
 
         // No found description
         if (!$description) {
-            $method = strtolower($request->method());
+            $method = strtolower(Request::method());
             $verb = config('audit-trail.method.' . $method);
             $description = $verb . ' ' . Request::path();
         }
