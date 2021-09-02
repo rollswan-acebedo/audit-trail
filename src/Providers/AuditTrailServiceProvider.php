@@ -16,7 +16,7 @@ class AuditTrailServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        $source = realpath($raw = __DIR__ . '/../config/audit-trail.php') ?: $raw;
+        $source = realpath($raw = __DIR__ . '/../config.php') ?: $raw;
 
         $router->middlewareGroup('audit-trail', [AuditTrailMiddleware::class]);
 
@@ -38,7 +38,7 @@ class AuditTrailServiceProvider extends ServiceProvider
         if (file_exists(config_path('audit-trail.php'))) {
             $this->mergeConfigFrom(config_path('audit-trail.php'), 'audit-trail');
         } else {
-            $this->mergeConfigFrom(__DIR__ . '/config/audit-trail.php', 'audit-trail');
+            $this->mergeConfigFrom(__DIR__ . '/../config.php', 'audit-trail');
         }
     }
 }
