@@ -20,5 +20,12 @@
             "email": "rollswanacebedo@gmail.com"
         }
     ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Rollswan\\AuditTrail\\Providers\\AuditTrailServiceProvider"
+            ]
+        }
+    },
     "minimum-stability": "dev"
 }
