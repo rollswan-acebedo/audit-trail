@@ -38,7 +38,7 @@ class AuditTrailServiceProvider extends ServiceProvider
         if (file_exists(config_path('audit-trail.php'))) {
             $this->mergeConfigFrom(config_path('audit-trail.php'), 'audit-trail');
         } else {
-            $this->mergeConfigFrom(__DIR__.'/config/audit-trail.php', 'audit-trail');
+            $this->mergeConfigFrom(__DIR__ . '/config/audit-trail.php', 'audit-trail');
         }
     }
 }
