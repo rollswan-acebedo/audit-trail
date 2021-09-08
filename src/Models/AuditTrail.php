@@ -52,7 +52,7 @@ class AuditTrail extends Model
      */
     public function getPlatformAttribute()
     {
-        return $this->getUserAgentInfo($this->user_agent)["platform"];
+        return $this->getUserAgentInfo($this->user_agent)["platform"] ?? '';
     }
 
     /**
@@ -62,7 +62,7 @@ class AuditTrail extends Model
      */
     public function getBrowserAttribute()
     {
-        return $this->getUserAgentInfo($this->user_agent)["browser"];
+        return $this->getUserAgentInfo($this->user_agent)["browser"] ?? '';
     }
 
     /**
@@ -72,7 +72,7 @@ class AuditTrail extends Model
      */
     public function getVersionAttribute()
     {
-        return $this->getUserAgentInfo($this->user_agent)["version"];
+        return $this->getUserAgentInfo($this->user_agent)["version"] ?? '';
     }
 
     /**
